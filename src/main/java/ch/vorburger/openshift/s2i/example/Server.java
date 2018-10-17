@@ -50,6 +50,9 @@ public class Server implements AutoCloseable {
         httpServer = HttpServer.create(new InetSocketAddress(port), 0);
         httpServer.createContext("/", exchange -> {
             //response = "Timestamp:2018-10-10T22:06:26.627+0000,Level:INFO,Version:Payara 4.1,LoggerName:javax.enterprise.system.core,ThreadID:1,ThreadName:main,TimeMillis:1539209186627,LevelValue:800,MessageID:NCLS-CORE-00017,LogMessage:Payara Server  4.1.2.183 #badassfish (2) startup time : Felix (4,806ms), startup services(10,241ms), total(15,047ms)";
+             String message = "Timestamp:2018-10-10T22:06:26.627+0000,Level:INFO,Version:Payara 4.1,LoggerName:javax.enterprise.system.core,ThreadID:1,ThreadName:main,TimeMillis:1539209186627,LevelValue:800,MessageID:NCLS-CORE-00017,LogMessage:Payara Server  4.1.2.183 #badassfish (2) startup time : Felix (4,806ms), startup services(10,241ms), total(15,047ms)";
+             System.out.println(message);
+            
             exchange.sendResponseHeaders(HTTP_OK_STATUS, response.getBytes().length);
             OutputStream os = exchange.getResponseBody();
             os.write(response.getBytes());
